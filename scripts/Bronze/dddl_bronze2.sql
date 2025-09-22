@@ -24,6 +24,15 @@ CREATE TABLE bronze.crm_cust_info (
 );
 GO
 
+BULK INSERT bronze.crm_cust_info
+from 'C:\Users\Anudeep\Downloads\Sql_files\sql-data-warehouse-project\sql-data-warehouse-project\datasets\source_crm\cust_info.csv'
+WITH (
+ FIRSTROW = 2,
+ FIELDTERMINATOR = ',',
+ TABLOCK
+);
+
+
 IF OBJECT_ID('bronze.crm_prd_info', 'U') IS NOT NULL
     DROP TABLE bronze.crm_prd_info;
 GO
